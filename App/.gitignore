@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# Environment Variables
+.env
+*.env
+!.env.example
+
+# Logs
+*.log
+app.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+Database/data/*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+TEST_*.py
+test_*.py
+*_test.py
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+migrate_*.py
+
+# Documentation (optional)
+Routers/orders.md
+Note.txt
+
+# Static files (if not needed in production)
+# Static_Data/

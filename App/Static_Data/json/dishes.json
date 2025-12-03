@@ -1,0 +1,378 @@
+[
+  {
+    "ImageUrl": "Static_Data/images/Dishes/قرص طعمية صغير.jpg",
+    "Name": "قرص طعمية صغير",
+    "price": "2"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/قرص طعمية كبير.jpg",
+    "Name": "قرص طعمية كبير",
+    "price": "4"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/قرص طعمية محشية.jpg",
+    "Name": "قرص طعمية محشية",
+    "price": "5"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/طعمية كيري.jpeg",
+    "Name": "طبق طعمية كيري",
+    "price": "20"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/طعمية بسطرمة.jpeg",
+    "Name": "طبق طعمية بسطرمة",
+    "price": "25"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/طعمية رومي.jpg",
+    "Name": "طبق طعمية رومي",
+    "price": "25"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/عجينة طعمية.jpg",
+    "Name": "علبة عجينة طعمية",
+    "price": "15"
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول سادة.webp",
+    "Name": "علبة فول سادة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول محوج.jpg",
+    "Name": "علبة فول محوج",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول زيت حار.webp",
+    "Name": "علبة فول زيت حار",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول زيت زيتون.jpg",
+    "Name": "علبة فول زيت زيتون",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 30
+      },
+      {
+        "name": "صغيرة",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول بالزبدة.jpg",
+    "Name": "علبة فول بالزبدة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 30
+      },
+      {
+        "name": "صغيرة",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول بالصلصة.jpeg",
+    "Name": "علبة فول بالصلصة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 30
+      },
+      {
+        "name": "صغيرة",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول بيض مسلوق.jpg",
+    "Name": "علبة فول بيض مسلوق",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 30
+      },
+      {
+        "name": "صغيرة",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/فول اسكندراني.png",
+    "Name": "علبة فول اسكندراني",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 30
+      },
+      {
+        "name": "صغيرة",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/بطاطس مقلية.webp",
+    "Name": "باكت بطاطس مقلية",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 15
+      },
+      {
+        "name": "صغيرة",
+        "price": 10
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/بطاطس جمبري.jpeg",
+    "Name": "باكت بطاطس جمبري",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 15
+      },
+      {
+        "name": "صغيرة",
+        "price": 10
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/بطاطس شيبسي.jpg",
+    "Name": "باكت بطاطس شيبسي",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 15
+      },
+      {
+        "name": "صغيرة",
+        "price": 10
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/مسقعة.jpg",
+    "Name": "علبة مسقعة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/جبنة.jpg",
+    "Name": "علبة جبنة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/شكشوكة.jpg",
+    "Name": "علبة شكشوكة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/بابا غنوج.jpg",
+    "Name": "علبة بابا غنوج",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/بطاطس بوريه.jpg",
+    "Name": "علبة بطاطس بوريه",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/أومليت.jpg",
+    "Name": "طبق أومليت",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/بيض بسطرمة.jpg",
+    "Name": "قرص بيض بسطرمة",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 40
+      },
+      {
+        "name": "صغيرة",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/باذنجان مقلي.webp",
+    "Name": "علبة باذنجان مقلي",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 20
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/باذنجان مخلل.jpg",
+    "Name": "علبة باذنجان مخلل",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 20
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/ليمون معصفر.jpg",
+    "Name": "علبة ليمون معصفر",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/طرشي.jpg",
+    "Name": "علبة طرشي",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 15
+      },
+      {
+        "name": "صغيرة",
+        "price": 10
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/سلطة خضراء.jpg",
+    "Name": "علبة سلطة خضراء",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 25
+      },
+      {
+        "name": "صغيرة",
+        "price": 20
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/شرايح طماطم خيار.jpg",
+    "Name": "طبق شرايح طماطم وخيار",
+    "size": [
+      {
+        "name": "كبيرة",
+        "price": 20
+      },
+      {
+        "name": "صغيرة",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/Dishes/جبنة مقلية.jpg",
+    "Name": "طبق جبنة مقلية",
+    "price": "35"
+  }
+]

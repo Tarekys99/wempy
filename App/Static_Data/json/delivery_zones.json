@@ -1,0 +1,66 @@
+[
+     {
+          "ZoneName": "منطقة أ",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ب",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ج",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ح",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة د",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ز",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة س",
+          "DeliveryCost": 15.00
+     },
+     {
+          "ZoneName": "منطقة ص",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ط",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ع",
+          "DeliveryCost": 15.00
+     },
+     {
+          "ZoneName": "منطقة ك",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ل",
+          "DeliveryCost": 10.00
+     },
+     {
+          "ZoneName": "منطقة م",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة ن",
+          "DeliveryCost": 10.00
+     },
+     {
+          "ZoneName": "منطقة هـ",
+          "DeliveryCost": 20.00
+     },
+     {
+          "ZoneName": "منطقة و",
+          "DeliveryCost": 20.00
+     }
+]

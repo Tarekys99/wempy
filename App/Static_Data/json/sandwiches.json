@@ -1,0 +1,335 @@
+[
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول.jpg",
+    "Name": "ساندوتش فول",
+    "price": "10",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول اسكندراني.webp",
+    "Name": "ساندوتش فول اسكندراني",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول بالصلصة.jpg",
+    "Name": "ساندوتش فول بالصلصة",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول بالسمنة.jpg",
+    "Name": "ساندوتش فول بالسمنة",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول زيت زيتون.jpg",
+    "Name": "ساندوتش فول زيت زيتون",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول بالبيض.jpg",
+    "Name": "ساندوتش فول بالبيض",
+    "price": "15",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س فول على طعمية.webp",
+    "Name": "ساندوتش فول على طعمية",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية.jpeg",
+    "Name": "ساندوتش طعمية",
+    "price": "10",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية باذنجان.avif",
+    "Name": "ساندوتش طعمية باذنجان",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية بابا غنوج.jpg",
+    "Name": "ساندوتش طعمية بابا غنوج",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية جبنة.jpg",
+    "Name": "ساندوتش طعمية بالجبنة",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية كيري.jpeg",
+    "Name": "ساندوتش طعمية بالكيري",
+    "price": "25",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية ميكس.jpg",
+    "Name": "ساندوتش طعمية ميكس",
+    "price": "15",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية محشية.webp",
+    "Name": "ساندوتش طعمية محشية",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية اسكندراني.jpeg",
+    "Name": "ساندوتش طعمية اسكندراني",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س طعمية جبنة رومي.jpeg",
+    "Name": "ساندوتش طعمية جبنة رومي",
+    "price": "22",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بيض.jpg",
+    "Name": "ساندوتش بيض",
+    "price": "15",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س أومليت.jpg",
+    "Name": "ساندوتش أومليت",
+    "price": "25",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بيض بسطرمة.jpg",
+    "Name": "ساندوتش بيض بسطرمة",
+    "price": "25",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س عجة بلدي.jpeg",
+    "Name": "ساندوتش عجة بلدي",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س جبنة رومي مقلية.jpg",
+    "Name": "ساندوتش جبنة رومي مقلية",
+    "price": "25",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس مقلية.jpg",
+    "Name": "ساندوتش بطاطس مقلية",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س شيبسي.jpeg",
+    "Name": "ساندوتش بطاطس شيبسي",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س جمبري.jpg",
+    "Name": "ساندوتش بطاطس جمبري",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس بورية.jpg",
+    "Name": "(مهروسة)ساندوتش بطاطس بورية",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس بانية.jpg",
+    "Name": "ساندوتش بطاطس بانية",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس بالرومي.jpg",
+    "Name": "ساندوتش بطاطس بالرومي",
+    "price": "25",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس جبنة قريش.avif",
+    "Name": "ساندوتش بطاطس جبنة قريش",
+    "price": "15",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس جبنة شيدر.jpg",
+    "Name": "ساندوتش بطاطس جبنة شيدر",
+    "price": "25",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس كاتشب.jpg",
+    "Name": "ساندوتش بطاطس كاتشب",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس كاتشب مايونيز.jpeg",
+    "Name": "ساندوتش بطاطس كاتشب مايونيز",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس بالبيض.jpg",
+    "Name": "ساندوتش بطاطس بالبيض",
+    "price": "20",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بطاطس باذنجان.jpg",
+    "Name": "ساندوتش بطاطس باذنجان",
+    "price": "15",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س باذنجان مقلي.jpeg",
+    "Name": "ساندوتش باذنجان مقلي",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س بابا غنوج.webp",
+    "Name": "ساندوتش بابا غنوج",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س مسقعة.webp",
+    "Name": "ساندوتش مسقعة",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  },
+  {
+    "ImageUrl": "Static_Data/images/sandwiches/س شكشوكة.jpeg",
+    "Name": "ساندوتش شكشوكة",
+    "price": "12",
+    "type": [
+      "شامي",
+      "بلدي"
+    ]
+  }
+]
