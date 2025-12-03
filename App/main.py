@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 from Database.db_connect import Base, engine
 from config import response
@@ -20,6 +21,9 @@ from Routers import (category_api,
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI(title="E-Commerce System 'Wempy'")
+
+# Static Files - لعرض الصور
+app.mount("/images", StaticFiles(directory="Static_Data/images"), name="images")
 
 # Include routers
 app.include_router(user_api.router)
