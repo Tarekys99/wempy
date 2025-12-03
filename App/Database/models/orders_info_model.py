@@ -1,13 +1,13 @@
 # orders_info_model.py
 from sqlalchemy import Integer, Numeric, DateTime, Enum as SQLEnum, ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 import enum
 import uuid
 from typing import List
 
 from ..db_connect import Base
-from .user_model import GUID
 
 """
 معلومات عامة عن الاوردر:
@@ -33,7 +33,7 @@ class Order(Base):
     OrderID: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     
     # Foreign Keys
-    UserID: Mapped[uuid.UUID] = mapped_column(GUID(), ForeignKey("users.UserID"), nullable=False)
+    UserID: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.UserID"), nullable=False)
     AddressID: Mapped[int] = mapped_column(Integer, ForeignKey("address.AddressID"), nullable=False)
     PaymentID: Mapped[int] = mapped_column(Integer, ForeignKey("payment_method.PaymentID"), nullable=False)
     ShiftID: Mapped[int] = mapped_column(Integer, ForeignKey("shifts.ShiftID"), nullable=False)

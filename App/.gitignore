@@ -53,5 +53,5 @@ migrate_*.py
 Routers/orders.md
 Note.txt
 
-# Static files (if not needed in production)
-# Static_Data/
+# Others
+TEST_ANY_THINGS/

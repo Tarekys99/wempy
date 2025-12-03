@@ -5,39 +5,12 @@
 """
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import String, DateTime, func
-from sqlalchemy.types import TypeDecorator, CHAR
+from sqlalchemy.dialects.postgresql import UUID
 from typing import List
 from datetime import datetime
 import uuid
 
 from ..db_connect import Base
-
-
-# Custom UUID type for SQLite compatibility
-class GUID(TypeDecorator):
-    """Platform-independent GUID type. Uses CHAR(36) for SQLite."""
-    impl = CHAR
-    cache_ok = True
-
-    def process_bind_param(self, value, dialect):
-        if value is None:
-            return value
-        elif dialect.name == 'postgresql':
-            return str(value)
-        else:
-            if not isinstance(value, uuid.UUID):
-                return str(uuid.UUID(value))
-            else:
-                return str(value)
-
-    def process_result_value(self, value, dialect):
-        if value is None:
-            return value
-        else:
-            if not isinstance(value, uuid.UUID):
-                return uuid.UUID(value)
-            else:
-                return value
 
 
 """
@@ -50,7 +23,7 @@ class user:
 
 class User(Base):
     __tablename__ = "users"
-    UserID: Mapped[uuid.UUID] = mapped_column(GUID(), primary_key=True, default=uuid.uuid4)
+    UserID: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     FName: Mapped[str] = mapped_column(nullable=False)
     LName: Mapped[str] = mapped_column(nullable=False)
     PhoneNumber: Mapped[str] = mapped_column(String, nullable=False, unique=True)

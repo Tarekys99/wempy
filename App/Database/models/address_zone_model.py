@@ -1,11 +1,11 @@
 from sqlalchemy import String, Integer, Text, Numeric, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.dialects.postgresql import UUID
 from typing import List
 from decimal import Decimal
 import uuid
 
 from ..db_connect import Base
-from .user_model import GUID
 
 #==============================
 # Address table
@@ -13,7 +13,7 @@ from .user_model import GUID
 class Address(Base):
     __tablename__ = "address"
     AddressID: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    UserID: Mapped[uuid.UUID] = mapped_column(GUID(), ForeignKey("users.UserID"), nullable=False)
+    UserID: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.UserID"), nullable=False)
 
     RecipientName: Mapped[str] = mapped_column(String(50), nullable=False)
     Street: Mapped[str] = mapped_column(String(100), nullable=False)

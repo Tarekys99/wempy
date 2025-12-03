@@ -3,11 +3,23 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from datetime import datetime
 import uuid
+import logging
 
 from Database.pydantic_schema import user_schema
 from Database.models.user_model import User
 from Database import db_connect
 from config import response
+
+# إعداد Logger
+logger = logging.getLogger("user_api")
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(formatter)
+
+if not logger.handlers:
+    logger.addHandler(console_handler)
 
 router = APIRouter(
      prefix="/users",
@@ -29,9 +41,12 @@ def register_user(user: user_schema.UserCreate,
                   db: Session=Depends(db_connect.get_db)):
      
      try:
+          logger.info(f"محاولة تسجيل مستخدم جديد: {user.PhoneNumber}")
+          
           # التحقق من وجود المستخدم
           existing_user = db.query(User).filter(User.PhoneNumber == user.PhoneNumber).first()
           if existing_user:
+               logger.warning(f"المستخدم موجود بالفعل: {user.PhoneNumber}")
                raise HTTPException(
                     status_code=status.HTTP_409_CONFLICT,
                     detail={
@@ -42,28 +57,38 @@ def register_user(user: user_schema.UserCreate,
 
           # إنشاء مستخدم جديد
           user_data = user.model_dump()
-          user_data['UserID'] = str(uuid.uuid4())  # توليد UUID
+          logger.info(f"بيانات المستخدم: {user_data}")
+          
+          # لا تضيف UserID يدوياً - دع SQLAlchemy يولده تلقائياً
           new_user = User(**user_data)
           
+          logger.info(f"إضافة المستخدم إلى قاعدة البيانات...")
           db.add(new_user)
           db.commit()
           db.refresh(new_user)
           
+          logger.info(f"✓ تم تسجيل المستخدم بنجاح: {new_user.UserID}")
           return new_user
           
      except HTTPException:
           raise
      except SQLAlchemyError as e:
           db.rollback()
+          logger.error(f"✗ خطأ في قاعدة البيانات: {str(e)}")
+          logger.error(f"نوع الخطأ: {type(e).__name__}")
           raise HTTPException(
                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                detail={
                     "error": response.DATABASE_ERROR,
-                    "message": "فشل حفظ البيانات"
+                    "message": f"فشل حفظ البيانات: {str(e)}"
                }
           )
      except Exception as e:
           db.rollback()
+          logger.error(f"✗ خطأ غير متوقع: {str(e)}")
+          logger.error(f"نوع الخطأ: {type(e).__name__}")
+          import traceback
+          logger.error(f"Traceback: {traceback.format_exc()}")
           raise HTTPException(
                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                detail={
