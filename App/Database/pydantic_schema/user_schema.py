@@ -59,3 +59,13 @@ class UserResponse(UserBase):
     lastLogin: Optional[datetime] = None
     model_config = ConfigDict(from_attributes=True)
 
+class UserGetResponse(BaseModel):
+    """
+    استجابة GET لبيانات المستخدم - الاسم والبريد والهاتف فقط
+    """
+    FName: str
+    LName: str
+    Email: Optional[EmailStr] = None
+    PhoneNumber: str
+    model_config = ConfigDict(from_attributes=True)
+
