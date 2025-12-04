@@ -501,3 +501,58 @@ def update_order_status(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail={"error": "حدث خطأ غير متوقع"}
         )
+
+#=======================================
+# 9. GET Orders by Shift ID
+#=======================================
+
+@router.get("/shift/{shift_id}", response_model=List[orders_schema.OrderListResponse])
+def get_orders_by_shift(
+    shift_id: int,
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(db_connect.get_db)
+    ):
+    """
+    جلب جميع الطلبات المرتبطة بشفت معين
+    - يعرض عدد الطلبات
+    - يعرض معلومات مبسطة لكل طلب
+    """
+    try:
+        if limit > 500:
+            limit = 500
+        
+        # التحقق من وجود الشفت
+        from Database.models.shift_model import Shift
+        shift = db.query(Shift).filter(Shift.ShiftID == shift_id).first()
+        if not shift:
+            logger.error(f"الشفت غير موجود - ShiftID: {shift_id}")
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail={"error": "الشفت غير موجود"}
+            )
+        
+        # جلب الطلبات المرتبطة بالشفت
+        orders = db.query(Order).filter(
+            Order.ShiftID == shift_id
+        ).order_by(
+            Order.OrderTimestamp.desc()
+        ).offset(skip).limit(limit).all()
+        
+        logger.info(f"تم جلب {len(orders)} طلب للشفت {shift_id}")
+        return orders
+        
+    except HTTPException:
+        raise
+    except SQLAlchemyError as e:
+        logger.error(f"خطأ في قاعدة البيانات: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"error": "فشل جلب الطلبات"}
+        )
+    except Exception as e:
+        logger.error(f"خطأ غير متوقع: {str(e)}", exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"error": "حدث خطأ غير متوقع"}
+        )
