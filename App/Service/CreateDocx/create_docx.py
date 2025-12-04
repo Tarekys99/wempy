@@ -190,7 +190,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         notes_header.alignment = WD_ALIGN_PARAGRAPH.RIGHT
         notes_header.paragraph_format.space_before = Pt(3)
         notes_header.paragraph_format.space_after = Pt(2)
-        notes_header_run = notes_header.add_run("الملاحظات")
+        notes_header_run = notes_header.add_run("ملاحظات العميل")
         notes_header_run.font.size = Pt(9)
         notes_header_run.font.bold = True
         
@@ -200,6 +200,25 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         notes_table.allow_autofit = False
         notes_table.columns[0].width = Cm(6.0)
         set_cell_text(notes_table.cell(0, 0), invoice_data['order_notes'], align='right', font_size=8)
+    
+    # ============================
+    # 5.1 الملاحظات الخارجية
+    # ============================
+    if invoice_data.get('external_notes') and invoice_data['external_notes']:
+        external_notes_header = doc.add_paragraph()
+        external_notes_header.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+        external_notes_header.paragraph_format.space_before = Pt(3)
+        external_notes_header.paragraph_format.space_after = Pt(2)
+        external_notes_header_run = external_notes_header.add_run("ملاحظات خارجية")
+        external_notes_header_run.font.size = Pt(9)
+        external_notes_header_run.font.bold = True
+        
+        external_notes_table = doc.add_table(rows=1, cols=1)
+        external_notes_table.style = 'Table Grid'
+        external_notes_table.autofit = False
+        external_notes_table.allow_autofit = False
+        external_notes_table.columns[0].width = Cm(6.0)
+        set_cell_text(external_notes_table.cell(0, 0), invoice_data['external_notes'], align='right', font_size=8)
     
     # ============================
     # 6. الحساب النهائي

@@ -112,7 +112,8 @@ def create_order(
             OrderNumber=order_number,
             DeliveryFee=delivery_cost,
             TotalPrice=total_price,
-            OrderNotes=order_data.OrderNotes
+            OrderNotes=order_data.OrderNotes,
+            ExternalNotes=order_data.ExternalNotes
         )
         
         db.add(new_order)

@@ -63,6 +63,7 @@ def extract_order_data(db: Session, order_id: int) -> Dict[str, Any]:
         
         # ملاحظات الطلب
         "order_notes": order.OrderNotes if order.OrderNotes else "لا توجد ملاحظات",
+        "external_notes": order.ExternalNotes if order.ExternalNotes else "",
         
         # التكاليف
         "delivery_fee": float(order.DeliveryFee),

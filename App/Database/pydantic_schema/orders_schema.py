@@ -74,6 +74,7 @@ class OrderCreate(BaseModel):
     AddressID: int = Field(..., gt=0)
     PaymentID: int = Field(..., gt=0)
     OrderNotes: Optional[str] = Field(None, max_length=500)
+    ExternalNotes: Optional[str] = Field(None, max_length=500)
     
     items: List[OrderItemCreate] = Field(
         ..., 
@@ -90,6 +91,7 @@ class OrderCreate(BaseModel):
                 "AddressID": 2,
                 "PaymentID": 2,
                 "OrderNotes": "بدون بصل من فضلك",
+                "ExternalNotes": "ملاحظات خارجية",
                 "items": [
                     {"VariantID": 101, "Quantity": 2},
                     {"VariantID": 205, "Quantity": 1},
@@ -112,6 +114,7 @@ class OrderResponse(BaseModel):
     OrderTimestamp: datetime = Field(..., description="وقت إنشاء الطلب")
     Status: OrderStatus = Field(..., alias="OrderStatus", description="حالة الطلب الحالية")
     OrderNotes: Optional[str] = None
+    ExternalNotes: Optional[str] = None
     
     # order pricing
     DeliveryFee: Decimal = Field(..., description="رسوم التوصيل")
