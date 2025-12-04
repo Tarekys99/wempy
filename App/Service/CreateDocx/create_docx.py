@@ -121,7 +121,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     recipient_header_run.font.bold = True
     
     # جدول بيانات العميل
-    customer_table = doc.add_table(rows=3, cols=2)
+    customer_table = doc.add_table(rows=4, cols=2)
     customer_table.style = 'Table Grid'
     
     set_cell_text(customer_table.cell(0, 0), invoice_data['recipient_name'], font_size=9)
@@ -132,6 +132,10 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     address_text = f"{invoice_data['city']}، {invoice_data['street']}، {invoice_data['building']}"
     set_cell_text(customer_table.cell(2, 0), address_text, font_size=8)
     set_cell_text(customer_table.cell(2, 1), "العنوان", bold=True, font_size=9)
+    
+    # إضافة اسم المنطقة
+    set_cell_text(customer_table.cell(3, 0), invoice_data['zone_name'], font_size=9)
+    set_cell_text(customer_table.cell(3, 1), "المنطقة", bold=True, font_size=9)
     
     # ============================
     # 4. جدول المنتجات

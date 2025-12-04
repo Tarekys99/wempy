@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session, joinedload
 from Database.models.orders_info_model import Order
 from Database.models.order_item_model import OrderItem
 from Database.models.product_model import ProductVariant
+from Database.models.address_zone_model import Address
 from typing import Dict, Any
 from decimal import Decimal
 
@@ -23,7 +24,7 @@ def extract_order_data(db: Session, order_id: int) -> Dict[str, Any]:
         joinedload(Order.order_items).joinedload(OrderItem.product_variants).joinedload(ProductVariant.products),
         joinedload(Order.order_items).joinedload(OrderItem.product_variants).joinedload(ProductVariant.sizes),
         joinedload(Order.order_items).joinedload(OrderItem.product_variants).joinedload(ProductVariant.types),
-        joinedload(Order.address),
+        joinedload(Order.address).joinedload(Address.delivery_zone),
         joinedload(Order.payment_method),
         joinedload(Order.shifts)
     ).filter(Order.OrderID == order_id).first()
@@ -52,6 +53,10 @@ def extract_order_data(db: Session, order_id: int) -> Dict[str, Any]:
         "street": order.address.Street,
         "building": order.address.Building,
         "delivery_notes": order.address.DeliveryNotes,
+        
+        # معلومات المنطقة
+        "zone_name": order.address.delivery_zone.ZoneName,
+        "zone_delivery_cost": float(order.address.delivery_zone.DeliveryCost),
         
         # طريقة الدفع
         "payment_method": order.payment_method.PaymentName,
