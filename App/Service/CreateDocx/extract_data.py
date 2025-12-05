@@ -83,8 +83,21 @@ def extract_order_data(db: Session, order_id: int) -> Dict[str, Any]:
         size_name = variant.sizes.SizeName if hasattr(variant, 'sizes') and variant.sizes else ""
         type_name = variant.types.TypeName if hasattr(variant, 'types') and variant.types else ""
         
-        # دمج الحجم والنوع
-        variant_info = f"{size_name} - {type_name}" if size_name and type_name else (size_name or type_name or "عادي")
+        # فلترة "افتراضي" - لا نعرضه في الفاتورة
+        if size_name and size_name.lower() == "افتراضي":
+            size_name = ""
+        if type_name and type_name.lower() == "افتراضي":
+            type_name = ""
+        
+        # دمج الحجم والنوع (فقط إذا كانا غير فارغين)
+        if size_name and type_name:
+            variant_info = f"{size_name} - {type_name}"
+        elif size_name:
+            variant_info = size_name
+        elif type_name:
+            variant_info = type_name
+        else:
+            variant_info = ""  # لا يوجد متغير للعرض
         
         item_data = {
             "product_name": variant.products.Name,
