@@ -153,8 +153,8 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     products_table = doc.add_table(rows=items_count + 1, cols=4)
     products_table.style = 'Table Grid'
     
-    # تحديد عرض الأعمدة
-    col_widths = [Cm(1.5), Cm(1.3), Cm(0.7), Cm(4.0)]  # الإجمالي، السعر، الكمية، الصنف
+    # تحديد عرض الأعمدة (المجموع = 6.0 سم ليتناسب مع باقي الجداول)
+    col_widths = [Cm(1.2), Cm(1.0), Cm(0.6), Cm(3.2)]  # الإجمالي، السعر، الكمية، الصنف
     
     for row in products_table.rows:
         for idx, width in enumerate(col_widths):
