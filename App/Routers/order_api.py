@@ -99,8 +99,10 @@ def create_order(
         total_price = items_total + delivery_cost
         logger.info(f"السعر الإجمالي: {total_price}")
         
-        # حساب OrderNumber
-        last_order = db.query(Order).order_by(Order.OrderNumber.desc()).first()
+        # حساب OrderNumber بناءً على الشفت الحالي
+        last_order = db.query(Order).filter(
+            Order.ShiftID == order_data.ShiftID
+        ).order_by(Order.OrderNumber.desc()).first()
         order_number = (last_order.OrderNumber + 1) if last_order else 1
         
         # إنشاء الطلب

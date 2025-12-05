@@ -69,7 +69,7 @@ def start_shift(data: ShiftStart,
         raise HTTPException(500, "فشل بدء الوردية")
 
 
-# ✅ إنهاء بـ shift_id
+# إنهاء  shift_id
 @router.patch("/end_shift/{shift_id}")
 def end_shift(shift_id: int, db: Session = Depends(get_db)):
     
