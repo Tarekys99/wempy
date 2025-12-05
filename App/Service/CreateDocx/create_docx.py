@@ -171,10 +171,10 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     for idx, item in enumerate(invoice_data['items'], start=1):
         row_cells = products_table.rows[idx].cells
         
-        # دمج اسم المنتج مع المتغير
+        # دمج اسم المنتج مع المتغير (في سطرين منفصلين)
         product_full = f"{item['product_name']}"
         if item['variant_info']:
-            product_full += f" ({item['variant_info']})"
+            product_full += f"\n({item['variant_info']})"
         
         set_cell_text(row_cells[0], f"{item['subtotal']:.2f}", font_size=9)
         set_cell_text(row_cells[1], f"{item['unit_price']:.2f}", font_size=9)
