@@ -4,6 +4,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from typing import Dict, Any, Tuple
 from io import BytesIO
 from datetime import datetime
+from pathlib import Path
 
 
 def set_cell_text(cell, text, bold=False, align=None, font_size=9):
@@ -72,6 +73,17 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     orders_stats = report_data['orders_stats']
     financial_stats = report_data['financial_stats']
     payment_methods = report_data['payment_methods']
+    
+    # ============================
+    # 0. اللوجو (إذا كان موجوداً)
+    # ============================
+    logo_path = Path(__file__).parent.parent.parent / "Static_Data" / "logo.png"
+    if logo_path.exists():
+        logo_paragraph = doc.add_paragraph()
+        logo_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        logo_paragraph.paragraph_format.space_after = Pt(5)
+        logo_run = logo_paragraph.add_run()
+        logo_run.add_picture(str(logo_path), width=Cm(3.0))  # عرض 3 سم (مناسب للطابعة الحرارية)
     
     # ============================
     # 1. العنوان الرئيسي
