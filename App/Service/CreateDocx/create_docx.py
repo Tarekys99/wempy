@@ -277,6 +277,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
     footer.paragraph_format.space_before = Pt(0)
     footer_run = footer.add_run("شكراً لتعاملكم معنا")
+    footer_run = footer.add_run("\n٢٩٨ ن شارع العشرين - البوابة الرابعة - حدائق الاهرام")
     footer_run.font.size = Pt(9)
     footer_run.font.bold = True
     
