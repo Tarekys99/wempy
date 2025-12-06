@@ -60,6 +60,7 @@ def extract_order_data(db: Session, order_id: int) -> Dict[str, Any]:
         
         # طريقة الدفع
         "payment_method": order.payment_method.PaymentName,
+        "payment_id": order.payment_method.PaymentID,
         
         # ملاحظات الطلب
         "order_notes": order.OrderNotes if order.OrderNotes else "لا توجد ملاحظات",

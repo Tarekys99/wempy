@@ -244,7 +244,9 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     payment_header_run.font.bold = True
     
     # جدول الملخص المالي
-    summary_table = doc.add_table(rows=4, cols=2)
+    # تحديد عدد الصفوف بناءً على طريقة الدفع
+    rows_count = 5 if invoice_data.get('payment_id') == 2 else 4
+    summary_table = doc.add_table(rows=rows_count, cols=2)
     summary_table.style = 'Table Grid'
     
     # مجموع المنتجات
@@ -262,6 +264,11 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     # طريقة الدفع
     set_cell_text(summary_table.cell(3, 0), invoice_data['payment_method'], font_size=9)
     set_cell_text(summary_table.cell(3, 1), "طريقة الدفع", bold=True, font_size=9)
+    
+    # رقم التحويل (فقط إذا كانت طريقة الدفع محفظة إلكترونية)
+    if invoice_data.get('payment_id') == 2:
+        set_cell_text(summary_table.cell(4, 0), "01008403545", font_size=9)
+        set_cell_text(summary_table.cell(4, 1), "رقم التحويل فودافون كاش", bold=True, font_size=9)
     
     # ============================
     # 7. الخاتمة
