@@ -21,6 +21,7 @@ class OrderStatus(str, Enum):
 class OrderItemCreate(BaseModel):
     VariantID: int = Field(..., gt=0)
     Quantity: int = Field(..., gt=0, le=100)
+    CustomPrice: Optional[Decimal] = Field(None, ge=10, description="السعر المخصص (للمنتجات حسب الطلب) - الحد الأدنى 10 ج.م")
 
 class ProductVariantInfo(BaseModel):
     VariantID: int

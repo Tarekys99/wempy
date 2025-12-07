@@ -71,7 +71,9 @@ def create_order(
         items_total = Decimal('0.00')
         
         for item in order_data.items:
-            variant = db.query(ProductVariant).filter(
+            variant = db.query(ProductVariant).options(
+                joinedload(ProductVariant.sizes)
+            ).filter(
                 ProductVariant.VariantID == item.VariantID
             ).first()
             
@@ -85,7 +87,26 @@ def create_order(
                     status_code=status.HTTP_400_BAD_REQUEST,
                     detail={"error": f"المنتج رقم {item.VariantID} غير متوفر حالياً"})
             
-            unit_price = Decimal(str(variant.Price))
+            # التحقق: إذا كان الحجم "حسب الطلب"، يجب إرسال CustomPrice
+            is_custom_size = variant.sizes and variant.sizes.SizeName == "حسب الطلب"
+            
+            if is_custom_size:
+                if not item.CustomPrice:
+                    raise HTTPException(
+                        status_code=status.HTTP_400_BAD_REQUEST,
+                        detail={"error": f"المنتج رقم {item.VariantID} يتطلب تحديد السعر (الحد الأدنى 10 ج.م)"})
+                
+                if item.CustomPrice < 10:
+                    raise HTTPException(
+                        status_code=status.HTTP_400_BAD_REQUEST,
+                        detail={"error": f"السعر المخصص يجب أن يكون 10 ج.م على الأقل"})
+                
+                unit_price = item.CustomPrice
+                logger.info(f"منتج حسب الطلب - VariantID: {item.VariantID}, السعر المخصص: {unit_price}")
+            else:
+                # منتج عادي - استخدم السعر من قاعدة البيانات
+                unit_price = Decimal(str(variant.Price))
+            
             subtotal = unit_price * item.Quantity
             items_total += subtotal
             
