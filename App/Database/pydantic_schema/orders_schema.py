@@ -96,7 +96,8 @@ class OrderCreate(BaseModel):
                 "items": [
                     {"VariantID": 101, "Quantity": 2},
                     {"VariantID": 205, "Quantity": 1},
-                    {"VariantID": 150, "Quantity": 3}
+                    {"VariantID": 150, "Quantity": 3},
+                    {"VariantID": 50, "Quantity": 1, "CustomPrice": 25.00}
                 ]
             }
         }
