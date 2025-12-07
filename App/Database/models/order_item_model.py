@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, ForeignKey, DECIMAL
+from sqlalchemy import Integer, ForeignKey, DECIMAL, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from decimal import Decimal
 
@@ -13,6 +13,7 @@ class OrderItem(Base):
     Quantity: Mapped[int] = mapped_column(Integer, nullable=False)
     UnitPrice: Mapped[Decimal] = mapped_column(DECIMAL(10, 2), nullable=False)
     Subtotal: Mapped[Decimal] = mapped_column(DECIMAL(10, 2), nullable=False)
+    IsSada: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     
     """
     Relationships:

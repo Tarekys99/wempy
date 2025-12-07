@@ -22,6 +22,7 @@ class OrderItemCreate(BaseModel):
     VariantID: int = Field(..., gt=0)
     Quantity: int = Field(..., gt=0, le=100)
     CustomPrice: Optional[Decimal] = Field(None, ge=10, description="السعر المخصص (للمنتجات حسب الطلب) - الحد الأدنى 10 ج.م")
+    IsSada: Optional[bool] = Field(default=False, description="هل المنتج سادة (بدون حشو)؟")
 
 class ProductVariantInfo(BaseModel):
     VariantID: int
@@ -57,6 +58,7 @@ class OrderItemResponse(BaseModel):
     Quantity: int
     UnitPrice: Decimal
     Subtotal: Decimal
+    IsSada: bool
     
     # product info
     product_variants: ProductVariantInfo = Field(..., description="معلومات المنتج")
@@ -94,9 +96,9 @@ class OrderCreate(BaseModel):
                 "OrderNotes": "بدون بصل من فضلك",
                 "ExternalNotes": "ملاحظات خارجية",
                 "items": [
-                    {"VariantID": 101, "Quantity": 2},
+                    {"VariantID": 101, "Quantity": 2, "IsSada": True},
                     {"VariantID": 205, "Quantity": 1},
-                    {"VariantID": 150, "Quantity": 3},
+                    {"VariantID": 150, "Quantity": 3, "IsSada": False},
                     {"VariantID": 50, "Quantity": 1, "CustomPrice": 25.00}
                 ]
             }

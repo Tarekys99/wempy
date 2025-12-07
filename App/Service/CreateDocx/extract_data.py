@@ -105,7 +105,8 @@ def extract_order_data(db: Session, order_id: int) -> Dict[str, Any]:
             "variant_info": variant_info,
             "unit_price": float(order_item.UnitPrice),
             "quantity": order_item.Quantity,
-            "subtotal": float(order_item.Subtotal)
+            "subtotal": float(order_item.Subtotal),
+            "is_sada": order_item.IsSada if hasattr(order_item, 'IsSada') else False
         }
         
         invoice_data["items"].append(item_data)

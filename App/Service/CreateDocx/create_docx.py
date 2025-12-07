@@ -186,6 +186,11 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         
         # دمج اسم المنتج مع المتغير (في سطرين منفصلين)
         product_full = f"{item['product_name']}"
+        
+        # إضافة "سادة" إذا كان المنتج سادة
+        if item.get('is_sada', False):
+            product_full += " - سادة"
+        
         if item['variant_info']:
             product_full += f"\n({item['variant_info']})"
         

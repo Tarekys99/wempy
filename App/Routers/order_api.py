@@ -143,13 +143,14 @@ def create_order(
         db.flush()
         
         # إنشاء عناصر الطلب
-        for item_data in order_items_data:
+        for idx, item_data in enumerate(order_items_data):
             order_item = OrderItem(
                 OrderID=new_order.OrderID,
                 VariantID=item_data['variant'].VariantID,
                 Quantity=item_data['quantity'],
                 UnitPrice=item_data['unit_price'],
-                Subtotal=item_data['subtotal']
+                Subtotal=item_data['subtotal'],
+                IsSada=order_data.items[idx].IsSada if order_data.items[idx].IsSada is not None else False
             )
             db.add(order_item)
         
