@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 
-def set_cell_text(cell, text, bold=False, align=None, font_size=9):
+def set_cell_text(cell, text, bold=False, align=None, font_size=12.6):
     """
     تعيين نص الخلية مع تنسيق بسيط
     """
@@ -51,7 +51,7 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     # ضبط مقاسات الطابعة الحرارية (نفس مقاسات فواتير الطلبات)
     # ============================
     section = doc.sections[0]
-    section.page_width = Mm(72.1)      # عرض الورق الحراري
+    section.page_width = Mm(80)      # عرض الورق الحراري
     section.page_height = Mm(297)      # طول الورق
     section.left_margin = Mm(4)        # هامش ضيق
     section.right_margin = Mm(4)
@@ -62,7 +62,7 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     style = doc.styles['Normal']
     font = style.font
     font.name = 'Arial'
-    font.size = Pt(9)
+    font.size = Pt(12.6)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     style.paragraph_format.space_before = Pt(0)
     style.paragraph_format.space_after = Pt(0)
@@ -91,7 +91,7 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     title = doc.add_paragraph()
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     title_run = title.add_run("تقرير تقفيل الشفت")
-    title_run.font.size = Pt(12)
+    title_run.font.size = Pt(16.8)
     title_run.font.bold = True
     
     # خط فاصل
@@ -100,7 +100,7 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     separator.paragraph_format.space_before = Pt(2)
     separator.paragraph_format.space_after = Pt(3)
     sep_run = separator.add_run("=" * 30)
-    sep_run.font.size = Pt(8)
+    sep_run.font.size = Pt(11.2)
     
     # ============================
     # 2. معلومات الشفت الأساسية
@@ -110,7 +110,7 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     shift_header.paragraph_format.space_before = Pt(2)
     shift_header.paragraph_format.space_after = Pt(2)
     shift_header_run = shift_header.add_run("📋 معلومات الشفت")
-    shift_header_run.font.size = Pt(10)
+    shift_header_run.font.size = Pt(14)
     shift_header_run.font.bold = True
     
     # جدول معلومات الشفت
@@ -122,20 +122,20 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     end_time_str = shift_info['end_time'].strftime("%I:%M %p") if shift_info['end_time'] else "مفتوح"
     duration_str = f"{shift_info['duration_hours']} ساعة"
     
-    set_cell_text(shift_table.cell(0, 0), shift_info['shift_number'], font_size=9)
-    set_cell_text(shift_table.cell(0, 1), "رقم الشفت", bold=True, font_size=9)
+    set_cell_text(shift_table.cell(0, 0), shift_info['shift_number'], font_size=12.6)
+    set_cell_text(shift_table.cell(0, 1), "رقم الشفت", bold=True, font_size=12.6)
     
-    set_cell_text(shift_table.cell(1, 0), shift_info['shift_date'].strftime("%Y-%m-%d"), font_size=9)
-    set_cell_text(shift_table.cell(1, 1), "التاريخ", bold=True, font_size=9)
+    set_cell_text(shift_table.cell(1, 0), shift_info['shift_date'].strftime("%Y-%m-%d"), font_size=12.6)
+    set_cell_text(shift_table.cell(1, 1), "التاريخ", bold=True, font_size=12.6)
     
-    set_cell_text(shift_table.cell(2, 0), start_time_str, font_size=9)
-    set_cell_text(shift_table.cell(2, 1), "وقت البداية", bold=True, font_size=9)
+    set_cell_text(shift_table.cell(2, 0), start_time_str, font_size=12.6)
+    set_cell_text(shift_table.cell(2, 1), "وقت البداية", bold=True, font_size=12.6)
     
-    set_cell_text(shift_table.cell(3, 0), end_time_str, font_size=9)
-    set_cell_text(shift_table.cell(3, 1), "وقت النهاية", bold=True, font_size=9)
+    set_cell_text(shift_table.cell(3, 0), end_time_str, font_size=12.6)
+    set_cell_text(shift_table.cell(3, 1), "وقت النهاية", bold=True, font_size=12.6)
     
-    set_cell_text(shift_table.cell(4, 0), duration_str, font_size=9)
-    set_cell_text(shift_table.cell(4, 1), "مدة الشفت", bold=True, font_size=9)
+    set_cell_text(shift_table.cell(4, 0), duration_str, font_size=12.6)
+    set_cell_text(shift_table.cell(4, 1), "مدة الشفت", bold=True, font_size=12.6)
     
     # ============================
     # 3. إحصائيات الطلبات
@@ -145,21 +145,21 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     orders_header.paragraph_format.space_before = Pt(3)
     orders_header.paragraph_format.space_after = Pt(2)
     orders_header_run = orders_header.add_run("📊 إحصائيات الطلبات")
-    orders_header_run.font.size = Pt(10)
+    orders_header_run.font.size = Pt(14)
     orders_header_run.font.bold = True
     
     # جدول إحصائيات الطلبات
     orders_table = doc.add_table(rows=3, cols=2)
     orders_table.style = 'Table Grid'
     
-    set_cell_text(orders_table.cell(0, 0), str(orders_stats['total_orders']), font_size=9)
-    set_cell_text(orders_table.cell(0, 1), "إجمالي الطلبات", bold=True, font_size=9)
+    set_cell_text(orders_table.cell(0, 0), str(orders_stats['total_orders']), font_size=12.6)
+    set_cell_text(orders_table.cell(0, 1), "إجمالي الطلبات", bold=True, font_size=12.6)
     
-    set_cell_text(orders_table.cell(1, 0), str(orders_stats['delivered_orders']), font_size=9)
-    set_cell_text(orders_table.cell(1, 1), "الطلبات المكتملة", bold=True, font_size=9)
+    set_cell_text(orders_table.cell(1, 0), str(orders_stats['delivered_orders']), font_size=12.6)
+    set_cell_text(orders_table.cell(1, 1), "الطلبات المكتملة", bold=True, font_size=12.6)
     
-    set_cell_text(orders_table.cell(2, 0), str(orders_stats['cancelled_orders']), font_size=9)
-    set_cell_text(orders_table.cell(2, 1), "الطلبات الملغاة", bold=True, font_size=9)
+    set_cell_text(orders_table.cell(2, 0), str(orders_stats['cancelled_orders']), font_size=12.6)
+    set_cell_text(orders_table.cell(2, 1), "الطلبات الملغاة", bold=True, font_size=12.6)
     
     # ============================
     # 4. الملخص المالي
@@ -169,24 +169,24 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     financial_header.paragraph_format.space_before = Pt(3)
     financial_header.paragraph_format.space_after = Pt(2)
     financial_header_run = financial_header.add_run("💰 الملخص المالي")
-    financial_header_run.font.size = Pt(10)
+    financial_header_run.font.size = Pt(14)
     financial_header_run.font.bold = True
     
     # جدول الملخص المالي
     financial_table = doc.add_table(rows=4, cols=2)
     financial_table.style = 'Table Grid'
     
-    set_cell_text(financial_table.cell(0, 0), f"{financial_stats['total_sales']:.2f} ج.م", font_size=9)
-    set_cell_text(financial_table.cell(0, 1), "إجمالي المبيعات", bold=True, font_size=9)
+    set_cell_text(financial_table.cell(0, 0), f"{financial_stats['total_sales']:.2f} ج.م", font_size=12.6)
+    set_cell_text(financial_table.cell(0, 1), "إجمالي المبيعات", bold=True, font_size=12.6)
     
-    set_cell_text(financial_table.cell(1, 0), f"{financial_stats['total_delivery_fees']:.2f} ج.م", font_size=9)
-    set_cell_text(financial_table.cell(1, 1), "رسوم التوصيل", bold=True, font_size=9)
+    set_cell_text(financial_table.cell(1, 0), f"{financial_stats['total_delivery_fees']:.2f} ج.م", font_size=12.6)
+    set_cell_text(financial_table.cell(1, 1), "رسوم التوصيل", bold=True, font_size=12.6)
     
-    set_cell_text(financial_table.cell(2, 0), f"{financial_stats['products_value']:.2f} ج.م", font_size=9)
-    set_cell_text(financial_table.cell(2, 1), "قيمة المنتجات", bold=True, font_size=9)
+    set_cell_text(financial_table.cell(2, 0), f"{financial_stats['products_value']:.2f} ج.م", font_size=12.6)
+    set_cell_text(financial_table.cell(2, 1), "قيمة المنتجات", bold=True, font_size=12.6)
     
-    set_cell_text(financial_table.cell(3, 0), f"{financial_stats['average_order_value']:.2f} ج.م", font_size=9)
-    set_cell_text(financial_table.cell(3, 1), "متوسط قيمة الطلب", bold=True, font_size=9)
+    set_cell_text(financial_table.cell(3, 0), f"{financial_stats['average_order_value']:.2f} ج.م", font_size=12.6)
+    set_cell_text(financial_table.cell(3, 1), "متوسط قيمة الطلب", bold=True, font_size=12.6)
     
     # ============================
     # 5. توزيع طرق الدفع
@@ -197,7 +197,7 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
         payment_header.paragraph_format.space_before = Pt(3)
         payment_header.paragraph_format.space_after = Pt(2)
         payment_header_run = payment_header.add_run("💳 توزيع طرق الدفع")
-        payment_header_run.font.size = Pt(10)
+        payment_header_run.font.size = Pt(14)
         payment_header_run.font.bold = True
         
         # جدول توزيع طرق الدفع (4 أعمدة)
@@ -214,19 +214,19 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
         
         # رأس الجدول
         hdr_cells = payment_table.rows[0].cells
-        set_cell_text(hdr_cells[0], "النسبة", bold=True, align='center', font_size=9)
-        set_cell_text(hdr_cells[1], "المبلغ", bold=True, align='center', font_size=9)
-        set_cell_text(hdr_cells[2], "العدد", bold=True, align='center', font_size=9)
-        set_cell_text(hdr_cells[3], "الطريقة", bold=True, align='center', font_size=9)
+        set_cell_text(hdr_cells[0], "النسبة", bold=True, align='center', font_size=12.6)
+        set_cell_text(hdr_cells[1], "المبلغ", bold=True, align='center', font_size=12.6)
+        set_cell_text(hdr_cells[2], "العدد", bold=True, align='center', font_size=12.6)
+        set_cell_text(hdr_cells[3], "الطريقة", bold=True, align='center', font_size=12.6)
         
         # بيانات طرق الدفع
         for idx, pm in enumerate(payment_methods, start=1):
             row_cells = payment_table.rows[idx].cells
             
-            set_cell_text(row_cells[0], f"{pm['percentage']:.1f}%", font_size=9)
-            set_cell_text(row_cells[1], f"{pm['total_amount']:.2f} ج.م", font_size=9)
-            set_cell_text(row_cells[2], str(pm['orders_count']), font_size=9)
-            set_cell_text(row_cells[3], pm['payment_method'], font_size=9)
+            set_cell_text(row_cells[0], f"{pm['percentage']:.1f}%", font_size=12.6)
+            set_cell_text(row_cells[1], f"{pm['total_amount']:.2f} ج.م", font_size=12.6)
+            set_cell_text(row_cells[2], str(pm['orders_count']), font_size=12.6)
+            set_cell_text(row_cells[3], pm['payment_method'], font_size=12.6)
     
     # ============================
     # 6. الخاتمة
@@ -236,13 +236,13 @@ def create_shift_report_in_memory(report_data: Dict[str, Any]) -> Tuple[BytesIO,
     separator2.paragraph_format.space_before = Pt(3)
     separator2.paragraph_format.space_after = Pt(2)
     sep2_run = separator2.add_run("=" * 30)
-    sep2_run.font.size = Pt(8)
+    sep2_run.font.size = Pt(11.2)
     
     footer = doc.add_paragraph()
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
     footer.paragraph_format.space_before = Pt(0)
     footer_run = footer.add_run(f"تم إنشاء التقرير: {datetime.now().strftime('%Y-%m-%d %I:%M %p')}")
-    footer_run.font.size = Pt(8)
+    footer_run.font.size = Pt(11.2)
     
     # ============================
     # 7. إنشاء اسم الملف وحفظه في الذاكرة

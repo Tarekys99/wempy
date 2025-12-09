@@ -7,7 +7,7 @@ from pathlib import Path
 import os
 
 
-def set_cell_text(cell, text, bold=False, align=None, font_size=9):
+def set_cell_text(cell, text, bold=False, align=None, font_size=12.6):
     """
     تعيين نص الخلية مع تنسيق بسيط
     """
@@ -51,7 +51,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     # ضبط مقاسات الطابعة الحرارية
     # ============================
     section = doc.sections[0]
-    section.page_width = Mm(72.1)      # عرض الورق الحراري
+    section.page_width = Mm(80)      # عرض الورق الحراري
     section.page_height = Mm(297)      # طول الورق
     section.left_margin = Mm(4)        # هامش ضيق
     section.right_margin = Mm(4)
@@ -62,7 +62,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     style = doc.styles['Normal']
     font = style.font
     font.name = 'Arial'
-    font.size = Pt(9)
+    font.size = Pt(12.6)
     style.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     style.paragraph_format.space_before = Pt(0)
     style.paragraph_format.space_after = Pt(0)
@@ -85,7 +85,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     title = doc.add_paragraph()
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     title_run = title.add_run(f"Order {invoice_data['order_number']}")
-    title_run.font.size = Pt(12)
+    title_run.font.size = Pt(16.8)
     title_run.font.bold = True
     
     # التاريخ
@@ -94,7 +94,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     date_p.paragraph_format.space_before = Pt(0)
     date_p.paragraph_format.space_after = Pt(2)
     date_run = date_p.add_run(f"{invoice_data['order_date']}")
-    date_run.font.size = Pt(8)
+    date_run.font.size = Pt(11.2)
     
     # خط فاصل
     separator = doc.add_paragraph()
@@ -102,7 +102,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     separator.paragraph_format.space_before = Pt(0)
     separator.paragraph_format.space_after = Pt(2)
     sep_run = separator.add_run("-" * 30)
-    sep_run.font.size = Pt(8)
+    sep_run.font.size = Pt(11.2)
     
     # ============================
     # 2. معلومات الشفت
@@ -112,7 +112,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     shift_info.paragraph_format.space_before = Pt(0)
     shift_info.paragraph_format.space_after = Pt(1)
     shift_run = shift_info.add_run(f"SHIFT - {invoice_data['shift_number']}")
-    shift_run.font.size = Pt(9)
+    shift_run.font.size = Pt(12.6)
     shift_run.font.bold = True
     
     # ============================
@@ -123,32 +123,32 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     separator2.paragraph_format.space_before = Pt(0)
     separator2.paragraph_format.space_after = Pt(3)
     sep2_run = separator2.add_run("-" * 30)
-    sep2_run.font.size = Pt(8)
+    sep2_run.font.size = Pt(11.2)
     
     recipient_header = doc.add_paragraph()
     recipient_header.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     recipient_header.paragraph_format.space_before = Pt(0)
     recipient_header.paragraph_format.space_after = Pt(2)
     recipient_header_run = recipient_header.add_run("بيانات العميل")
-    recipient_header_run.font.size = Pt(10)
+    recipient_header_run.font.size = Pt(14)
     recipient_header_run.font.bold = True
     
     # جدول بيانات العميل
     customer_table = doc.add_table(rows=4, cols=2)
     customer_table.style = 'Table Grid'
     
-    set_cell_text(customer_table.cell(0, 0), invoice_data['recipient_name'], font_size=9)
-    set_cell_text(customer_table.cell(0, 1), "الاسم", bold=True, font_size=9)
-    set_cell_text(customer_table.cell(1, 0), invoice_data['recipient_phone'], font_size=9)
-    set_cell_text(customer_table.cell(1, 1), "الهاتف", bold=True, font_size=9)
+    set_cell_text(customer_table.cell(0, 0), invoice_data['recipient_name'], font_size=12.6)
+    set_cell_text(customer_table.cell(0, 1), "الاسم", bold=True, font_size=12.6)
+    set_cell_text(customer_table.cell(1, 0), invoice_data['recipient_phone'], font_size=12.6)
+    set_cell_text(customer_table.cell(1, 1), "الهاتف", bold=True, font_size=12.6)
     
     address_text = f"{invoice_data['city']}، {invoice_data['street']}، {invoice_data['building']}"
-    set_cell_text(customer_table.cell(2, 0), address_text, font_size=8)
-    set_cell_text(customer_table.cell(2, 1), "العنوان", bold=True, font_size=9)
+    set_cell_text(customer_table.cell(2, 0), address_text, font_size=11.2)
+    set_cell_text(customer_table.cell(2, 1), "العنوان", bold=True, font_size=12.6)
     
     # إضافة اسم المنطقة
-    set_cell_text(customer_table.cell(3, 0), invoice_data['zone_name'], font_size=9)
-    set_cell_text(customer_table.cell(3, 1), "المنطقة", bold=True, font_size=9)
+    set_cell_text(customer_table.cell(3, 0), invoice_data['zone_name'], font_size=12.6)
+    set_cell_text(customer_table.cell(3, 1), "المنطقة", bold=True, font_size=12.6)
     
     # ============================
     # 4. جدول المنتجات
@@ -158,7 +158,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     products_header.paragraph_format.space_before = Pt(3)
     products_header.paragraph_format.space_after = Pt(2)
     products_header_run = products_header.add_run("تفاصيل الطلب")
-    products_header_run.font.size = Pt(10)
+    products_header_run.font.size = Pt(14)
     products_header_run.font.bold = True
     
     # إنشاء جدول المنتجات (4 أعمدة)
@@ -175,10 +175,10 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     
     # رأس الجدول
     hdr_cells = products_table.rows[0].cells
-    set_cell_text(hdr_cells[0], "الإجمالي", bold=True, align='center', font_size=9)
-    set_cell_text(hdr_cells[1], "السعر", bold=True, align='center', font_size=9)
-    set_cell_text(hdr_cells[2], "الكمية", bold=True, align='center', font_size=9)
-    set_cell_text(hdr_cells[3], "الصنف", bold=True, align='center', font_size=9)
+    set_cell_text(hdr_cells[0], "الإجمالي", bold=True, align='center', font_size=12.6)
+    set_cell_text(hdr_cells[1], "السعر", bold=True, align='center', font_size=12.6)
+    set_cell_text(hdr_cells[2], "الكمية", bold=True, align='center', font_size=12.6)
+    set_cell_text(hdr_cells[3], "الصنف", bold=True, align='center', font_size=12.6)
     
     # بيانات المنتجات
     for idx, item in enumerate(invoice_data['items'], start=1):
@@ -194,10 +194,10 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         if item['variant_info']:
             product_full += f"\n({item['variant_info']})"
         
-        set_cell_text(row_cells[0], f"{item['subtotal']:.2f}", font_size=9)
-        set_cell_text(row_cells[1], f"{item['unit_price']:.2f}", font_size=9)
-        set_cell_text(row_cells[2], str(item['quantity']), font_size=9)
-        set_cell_text(row_cells[3], product_full, font_size=8)
+        set_cell_text(row_cells[0], f"{item['subtotal']:.2f}", font_size=12.6)
+        set_cell_text(row_cells[1], f"{item['unit_price']:.2f}", font_size=12.6)
+        set_cell_text(row_cells[2], str(item['quantity']), font_size=12.6)
+        set_cell_text(row_cells[3], product_full, font_size=11.2)
     
     # ============================
     # 5. ملاحظات الطلب
@@ -208,7 +208,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         notes_header.paragraph_format.space_before = Pt(3)
         notes_header.paragraph_format.space_after = Pt(2)
         notes_header_run = notes_header.add_run("ملاحظات العميل")
-        notes_header_run.font.size = Pt(9)
+        notes_header_run.font.size = Pt(12.6)
         notes_header_run.font.bold = True
         
         notes_table = doc.add_table(rows=1, cols=1)
@@ -216,7 +216,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         notes_table.autofit = False
         notes_table.allow_autofit = False
         notes_table.columns[0].width = Cm(6.0)
-        set_cell_text(notes_table.cell(0, 0), invoice_data['order_notes'], align='right', font_size=8)
+        set_cell_text(notes_table.cell(0, 0), invoice_data['order_notes'], align='right', font_size=11.2)
     
     # ============================
     # 5.1 الملاحظات الخارجية
@@ -227,7 +227,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         external_notes_header.paragraph_format.space_before = Pt(3)
         external_notes_header.paragraph_format.space_after = Pt(2)
         external_notes_header_run = external_notes_header.add_run("ملاحظات خارجية")
-        external_notes_header_run.font.size = Pt(9)
+        external_notes_header_run.font.size = Pt(12.6)
         external_notes_header_run.font.bold = True
         
         external_notes_table = doc.add_table(rows=1, cols=1)
@@ -235,7 +235,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
         external_notes_table.autofit = False
         external_notes_table.allow_autofit = False
         external_notes_table.columns[0].width = Cm(6.0)
-        set_cell_text(external_notes_table.cell(0, 0), invoice_data['external_notes'], align='right', font_size=8)
+        set_cell_text(external_notes_table.cell(0, 0), invoice_data['external_notes'], align='right', font_size=11.2)
     
     # ============================
     # 6. الحساب النهائي
@@ -245,7 +245,7 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     payment_header.paragraph_format.space_before = Pt(3)
     payment_header.paragraph_format.space_after = Pt(2)
     payment_header_run = payment_header.add_run("الحساب")
-    payment_header_run.font.size = Pt(10)
+    payment_header_run.font.size = Pt(14)
     payment_header_run.font.bold = True
     
     # جدول الملخص المالي
@@ -255,25 +255,25 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     summary_table.style = 'Table Grid'
     
     # مجموع المنتجات
-    set_cell_text(summary_table.cell(0, 0), f"{invoice_data['items_subtotal']:.2f} ج.م", font_size=9)
-    set_cell_text(summary_table.cell(0, 1), "المجموع الفرعي", bold=True, font_size=9)
+    set_cell_text(summary_table.cell(0, 0), f"{invoice_data['items_subtotal']:.2f} ج.م", font_size=12.6)
+    set_cell_text(summary_table.cell(0, 1), "المجموع الفرعي", bold=True, font_size=12.6)
     
     # تكلفة التوصيل
-    set_cell_text(summary_table.cell(1, 0), f"{invoice_data['delivery_fee']:.2f} ج.م", font_size=9)
-    set_cell_text(summary_table.cell(1, 1), "رسوم التوصيل", bold=True, font_size=9)
+    set_cell_text(summary_table.cell(1, 0), f"{invoice_data['delivery_fee']:.2f} ج.م", font_size=12.6)
+    set_cell_text(summary_table.cell(1, 1), "رسوم التوصيل", bold=True, font_size=12.6)
     
     # الإجمالي النهائي
-    set_cell_text(summary_table.cell(2, 0), f"{invoice_data['total_price']:.2f} ج.م", bold=True, font_size=10)
-    set_cell_text(summary_table.cell(2, 1), "الإجمالي النهائي", bold=True, font_size=10)
+    set_cell_text(summary_table.cell(2, 0), f"{invoice_data['total_price']:.2f} ج.م", bold=True, font_size=14)
+    set_cell_text(summary_table.cell(2, 1), "الإجمالي النهائي", bold=True, font_size=14)
     
     # طريقة الدفع
-    set_cell_text(summary_table.cell(3, 0), invoice_data['payment_method'], font_size=9)
-    set_cell_text(summary_table.cell(3, 1), "طريقة الدفع", bold=True, font_size=9)
+    set_cell_text(summary_table.cell(3, 0), invoice_data['payment_method'], font_size=12.6)
+    set_cell_text(summary_table.cell(3, 1), "طريقة الدفع", bold=True, font_size=12.6)
     
     # رقم التحويل (فقط إذا كانت طريقة الدفع محفظة إلكترونية)
     if invoice_data.get('payment_id') == 2:
-        set_cell_text(summary_table.cell(4, 0), "01008403545", font_size=9)
-        set_cell_text(summary_table.cell(4, 1), "رقم التحويل فودافون كاش", bold=True, font_size=9)
+        set_cell_text(summary_table.cell(4, 0), "01008403545", font_size=12.6)
+        set_cell_text(summary_table.cell(4, 1), "رقم التحويل فودافون كاش", bold=True, font_size=12.6)
     
     # ============================
     # 7. الخاتمة
@@ -283,14 +283,14 @@ def create_invoice_in_memory(invoice_data: Dict[str, Any]) -> Tuple[BytesIO, str
     separator3.paragraph_format.space_before = Pt(3)
     separator3.paragraph_format.space_after = Pt(2)
     sep3_run = separator3.add_run("-" * 30)
-    sep3_run.font.size = Pt(8)
+    sep3_run.font.size = Pt(11.2)
     
     footer = doc.add_paragraph()
     footer.alignment = WD_ALIGN_PARAGRAPH.CENTER
     footer.paragraph_format.space_before = Pt(0)
     footer_run = footer.add_run("شكراً لتعاملكم معنا")
     footer_run = footer.add_run("\n٢٩٨ ن شارع العشرين - البوابة الرابعة - حدائق الاهرام")
-    footer_run.font.size = Pt(9)
+    footer_run.font.size = Pt(12.6)
     footer_run.font.bold = True
     
     # ============================
